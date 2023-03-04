@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import { ethers } from 'ethers';
 // import _crowdfunding_migration from '../migrations/1_crowdfunding_migration';
 import Web3 from "web3";
+import { loadContract } from './utils/load-contract';
 import detectEthereumProvider from '@metamask/detect-provider';
 
 
