@@ -17,7 +17,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -30,7 +31,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -50,7 +52,8 @@
       "name": "addFunds",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [],
@@ -63,7 +66,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -76,7 +80,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -6894,12 +6899,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xFDD9629BC0eCDBdB466910A47cF57201a6E0cd6D",
-      "transactionHash": "0x29df4304bb6615bf175e6325aae06c8e20a9e3f3965a9d104414561109bbf123"
+      "address": "0x6C7E352cFC1D048e9Ce2D24C326c4174d3DD5B1B",
+      "transactionHash": "0x1a8314f7d3d12879e5106d33148beff4fcf824d2228f2e5e91160803d8b5c93d"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2023-03-03T19:41:54.271Z",
+  "updatedAt": "2023-03-13T08:33:58.264Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
