@@ -18,6 +18,7 @@ function App() {
   })
   const [balance,setBalance]=useState(null);
   const [account,setAccount]=useState(null);
+
   useEffect(() => {
     const loadProvider = async () => {
       const provider = await detectEthereumProvider()

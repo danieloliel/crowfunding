@@ -126,6 +126,7 @@ const CreateCampaign = () => {
           goal: form.goal,
           deadline: form.deadline, 
           image: form.image}
+          console.log(form)
 
         setCampaigns([...campaigns, addData])
         }
