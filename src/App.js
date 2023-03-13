@@ -1,16 +1,21 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import detectEthereumProvider from '@metamask/detect-provider';
 import { loadContract } from './utils/load-contract';
 import Web3 from 'web3';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import CreateCampaign from './pages/CreateCampaign';
 import Home from './pages/Home';
 import Navbar from './Components/Navbar';
+import detectEthereumProvider from '@metamask/detect-provider';
 
 
 
+
+//import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
+//import { ethers } from 'ethers';
+//import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
 function App() {
+  
    const [web3Api, setWeb3Api] = useState({
     provider: null,
     web3: null,
@@ -18,12 +23,13 @@ function App() {
   })
   const [balance,setBalance]=useState(null);
   const [account,setAccount]=useState(null);
+  const [campaign,setcampaign]=useState([]);
 
   useEffect(() => {
     const loadProvider = async () => {
       const provider = await detectEthereumProvider()
       const contract = await loadContract("Crowdfunding", provider)
-
+      
       if(provider){
         setWeb3Api(
           {
@@ -40,18 +46,7 @@ function App() {
     loadProvider()
   }, []);
 
-  useEffect(
-    () => { //פונקציה שטוענת את המאזן של החוזה
-      const loadBalance = async () => {
-        const {contract,web3} = web3Api
-        const balance = await web3.eth.getBalance(contract.address) //פונקציה שמאפשרת לי להגיע לחוזה  
-        setBalance(web3.utils.fromWei(balance, "ether")) //המרה לאיתר 
-      }
-      web3Api.contract && loadBalance() // לא יריץ את הפנונקציה אם עדיין לא הגיע ערך
-    },[web3Api])
-
-
-    useEffect(
+   useEffect(
       ()=> {
         const getAccount = async () => {
           const accounts = await web3Api.web3.eth.getAccounts()
@@ -74,6 +69,27 @@ function App() {
   //   setCampaigns([...campaigns, addData])
   //   const {contract, web3} = web3Api
 
+          const LoadCampaigns = async () => {
+          const contract = web3Api;
+          console.log(contract)
+          const campaigns = await contract.getCampaigns(); 
+        
+      
+       
+        
+          
+          const parsedCampaings = campaigns.map((campaign, i) => ({
+            creators: campaign.creators,
+            titles: campaign.titles,
+            descriptions: campaign.descriptions,
+        
+          }))
+          setcampaign(parsedCampaings.titles)
+        }
+               
+  
+      
+    
   return (
     <div className="App">
       <Router>
@@ -85,10 +101,12 @@ function App() {
     </Router>
     <div>Current Balance is {balance} Ether</div>
     <div>Check that your account is {account}</div>
-      
+    <div> All campaigns {campaign}</div>
+      <button onClick={LoadCampaigns}>clickMe</button>
 
     </div>
   );
+
 }
 
 export default App;

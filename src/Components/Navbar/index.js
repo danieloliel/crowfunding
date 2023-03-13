@@ -9,10 +9,10 @@ return (
 	<Nav>
 		<NavMenu>
             <Logo src ={LogoImg}></Logo>
-		<NavLink to="/Home" activestyle>
+		<NavLink to="/Home" activestyle="true">
 			Home
 		</NavLink>
-		<NavLink to="/CreateCampaign" activestyle>
+		<NavLink to="/CreateCampaign" activestyle="true">
             Create Campaign
 		</NavLink>
 		</NavMenu>
